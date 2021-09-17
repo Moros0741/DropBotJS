@@ -42,6 +42,7 @@ module.exports = {
         if (!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || interaction.member.id === '765324522676682803' || interaction.member.id === '700057705951395921') {
             return interaction.reply({content: "This command requires \`ADMINISTRATOR\` permissions. Which you don't have.", ephemeral: true})
         } else {
+            let color = helper.getColor()
             let choice = interaction.options.getString('action')
             if (choice === 'toggle') {
                 let decision = interaction.options.getBoolean('enable')
@@ -56,7 +57,7 @@ module.exports = {
                     } else {
                         setInfo = "Disabled"
                     }
-                    return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`Drops are now \`${setInfo}\``).setColor('DARK_GOLD')], ephemeral: true})
+                    return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`Drops are now \`${setInfo}\``).setColor(color)], ephemeral: true})
                 }
             } else if (choice === 'duration') {
                  let interval = interaction.options.getNumber('duration')
@@ -66,7 +67,7 @@ module.exports = {
                      let time = helper.getSeconds(interval)
                      guildProfile.systems.drops.duration = time;
                      guildProfile.save();
-                     return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`The duration between drops has been set to \`${interval}\``).setColor('DARK_GOLD')], ephemeral: true})
+                     return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`The duration between drops has been set to \`${interval}\``).setColor(color)], ephemeral: true})
                  }
             } else if (choice === 'setFeed') {
                 let channel = interaction.options.getChannel('channel')
@@ -75,7 +76,7 @@ module.exports = {
                 } else {
                     guildProfile.systems.drops.feedChannel = channel.id;
                     guildProfile.save();
-                    return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`Drop reactions will now be sent to ${channel.toString()}`).setColor('DARK_GOLD')], ephemeral: true})
+                    return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`Drop reactions will now be sent to ${channel.toString()}`).setColor(color)], ephemeral: true})
                 }
             } else if (choice === 'addCategory') {
                 let channel = interaction.options.getChannel('channel')
@@ -84,7 +85,7 @@ module.exports = {
                 } else {
                     guildProfile.systems.drops.channels.push(channel.id);
                     guildProfile.save();
-                    return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`Drops will now be randomly sent in \`${channel.name}\` category.`).setColor('DARK_GOLD')], ephemeral: true})
+                    return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`Drops will now be randomly sent in \`${channel.name}\` category.`).setColor(color)], ephemeral: true})
                 }
             } else if (choice === 'removeCategory') {
                 let channel = interaction.options.getChannel('channel')
@@ -93,15 +94,16 @@ module.exports = {
                 } else {
                     guildProfile.systems.drops.channels.pull(channel.id);
                     guildProfile.save();
-                    return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`Drops will no longer randomly be sent to \`${channel.name}\` category.`).setColor('DARK_GOLD')], ephemeral: true})
+                    return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`Drops will no longer randomly be sent to \`${channel.name}\` category.`).setColor(color)], ephemeral: true})
                 }
             } else if (choice === 'addHouseRole') {
                 let role = interaction.options.getRole('house-role')
                 let houseName = interaction.options.getString('house-name')
+                let house;
                 if (!role || !houseName) {
                     return interaction.reply({contents: "Please try again and use the 'house-role' and 'house-name options. \n\n**Example:** \n> \`/setup [Action: Add House Role] [house-role: @role] [house-name: House's Name (ex: Gryffindor)]\`", ephemeral: true})
                 } else {
-                    let isHouse = guildProfile.houses.find({role: role.id})
+                    let isHouse = guildProfile.houses.find({name: houseName})
                     if (!isHouse) {
                         guildProfile.houses.push({
                             name: houseName, 
@@ -110,12 +112,15 @@ module.exports = {
                         });
                         guildProfile.save();
                     } else {
-                        guildProfile.houses.update({
-                            
-                        })
+                        house.update(
+                            {'name': houseName}, {'$set': {
+                            'role': role.id
+                        }},);
+                        house.save();
                     }
+                    return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(``)]})
                 }
             }
         }
-    }
-}
+    },
+};
