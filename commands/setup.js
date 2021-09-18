@@ -18,9 +18,19 @@ module.exports = {
             .addChoice('Add House Role', 'addHouseRole')
             .addChoice('Remove House Role', 'removeHouseRole')
         )
+        .addStringOption(option =>
+            option.setName('house')
+            .setDescription("Please choose the house that applys. None if none.")
+            .addChoice('Gryffindor', 'gryffindor')
+            .addChoice('Slytherin', 'slytherin')
+            .addChoice('Ravenclaw', 'ravenclaw')
+            .addChoice('Hufflepuff', 'hufflepuff')
+            .addChoice('Minister', 'minister')
+            .addChoice('None', 'none')
+        )
         .addRoleOption(option =>
-            option.setName('house-role')
-            .setDescription('Mention the house role to add/remove')
+            option.setName('role')
+            .setDescription('Mention the role to add/remove')
             .setRequired(false)
         )
         .addBooleanOption(option =>
@@ -98,28 +108,36 @@ module.exports = {
                 }
             } else if (choice === 'addHouseRole') {
                 let role = interaction.options.getRole('house-role')
-                let houseName = interaction.options.getString('house-name')
-                let house;
-                if (!role || !houseName) {
-                    return interaction.reply({contents: "Please try again and use the 'house-role' and 'house-name options. \n\n**Example:** \n> \`/setup [Action: Add House Role] [house-role: @role] [house-name: House's Name (ex: Gryffindor)]\`", ephemeral: true})
+                let houseName = interaction.options.getString('house')
+                if (!houseName || !role) {
+                    return interaction.reply({contents: "Please try again and use the 'house' and 'role' options. \n\n**Example:** \n> \`/setup [Choice: Add House Role] [House: House option] [Role: @role]\`", ephemeral: true})
                 } else {
-                    let isHouse = guildProfile.houses.find({name: houseName})
-                    if (!isHouse) {
-                        guildProfile.houses.push({
-                            name: houseName, 
-                            role: role.id,
-                            points: 0
-                        });
-                        guildProfile.save();
+                    let house = guildProfile.houses
+                    let name;
+                    if (houseName === 'none') {
+                        return interaction.reply({embeds: [embed => new Message.embed().setDescription(`House was None. Nowhere to put role.`).setColor(color)], ephemeral: true})
                     } else {
-                        house.update(
-                            {'name': houseName}, {'$set': {
-                            'role': role.id
-                        }},);
-                        house.save();
+                        if (houseName === 'gryffindor') {
+                            house.gryffindor.roleID = role.id
+                            name = house.gryffindor.name
+                        } else if (houseName === 'hufflepuff') {
+                            house.hufflepuff.roleID = role.id
+                            name = house.hufflepuff.name
+                        } else if (houseName === 'ravenclaw') {
+                            house.ravenclaw.roleID = role.id
+                            name = house.ravenclaw.name
+                        } else if (houseName === 'slytherin') {
+                            house.slytherin.roleID = role.id
+                            name = house.slytherin.name
+                        } else if (houseName === 'ministry') {
+                            house.ministry.roleID = role.id
+                            name = house.ministry.name
+                        }
+                        return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`Role has been updated for ${name}. New role is set to ${role.toString()}`).setColor(color)], ephemeral: true})
                     }
-                    return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(``)]})
                 }
+            } else if (choice === 'removeHouseRole') {
+                
             }
         }
     },
