@@ -3,7 +3,7 @@ exports.getSeconds = function (duration) {
     time = duration.splice(0, duration.length - 1)
     let index = duration.splice(duration.length - 1, duration.length)
     console.log(time, index)
-    time_convert = {"s":1, "m":60, "h":3600,"d":86400}
+    time_convert = {"s":1000, "m":60000, "h":3600000,"d":86400000}
     newtime= Number(time) * time_convert[index]
     return newtime
 };

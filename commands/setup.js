@@ -20,13 +20,13 @@ module.exports = {
         )
         .addStringOption(option =>
             option.setName('house')
+            .setRequired(false)
             .setDescription("Please choose the house that applys. None if none.")
             .addChoice('Gryffindor', 'gryffindor')
             .addChoice('Slytherin', 'slytherin')
             .addChoice('Ravenclaw', 'ravenclaw')
             .addChoice('Hufflepuff', 'hufflepuff')
             .addChoice('Minister', 'minister')
-            .addChoice('None', 'none')
         )
         .addRoleOption(option =>
             option.setName('role')
@@ -114,8 +114,8 @@ module.exports = {
                 } else {
                     let house = guildProfile.houses
                     let name;
-                    if (houseName === 'none') {
-                        return interaction.reply({embeds: [embed => new Message.embed().setDescription(`House was None. Nowhere to put role.`).setColor(color)], ephemeral: true})
+                    if (!houseName) {
+                        return interaction.reply({embeds: [embed => new Message.embed().setDescription(`Please choose a house to assign the role to.`).setColor(color)], ephemeral: true})
                     } else {
                         if (houseName === 'gryffindor') {
                             house.gryffindor.roleID = role.id
@@ -137,7 +137,34 @@ module.exports = {
                     }
                 }
             } else if (choice === 'removeHouseRole') {
-                
+                let houseName = interaction.options.getString('house')
+                if (!houseName || !role) {
+                    return interaction.reply({contents: "Please try again and use the 'house' option. \n\n**Example:** \n> \`/setup [Choice: Remove House Role] [House: House option]\`", ephemeral: true})
+                } else {
+                    let house = guildProfile.houses
+                    let name;
+                    if (!houseName) {
+                        return interaction.reply({embeds: [embed => new Message.embed().setDescription(`Please choose a house to remove this role from.`).setColor(color)], ephemeral: true})
+                    } else {
+                        if (houseName === 'gryffindor') {
+                            house.gryffindor.roleID = undefined
+                            name = house.gryffindor.name
+                        } else if (houseName === 'hufflepuff') {
+                            house.hufflepuff.roleID = undefined
+                            name = house.hufflepuff.name
+                        } else if (houseName === 'ravenclaw') {
+                            house.ravenclaw.roleID = undefined
+                            name = house.ravenclaw.name
+                        } else if (houseName === 'slytherin') {
+                            house.slytherin.roleID = undefined
+                            name = house.slytherin.name
+                        } else if (houseName === 'ministry') {
+                            house.ministry.roleID = undefined
+                            name = house.ministry.name
+                        }
+                        return interaction.reply({embeds: [embed => new MessageEmbed().setDescription(`Role has been updated for ${name}. New role is set to ${role.toString()}`).setColor(color)], ephemeral: true})
+                    }
+                }
             }
         }
     },

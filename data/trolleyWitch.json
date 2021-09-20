@@ -1,0 +1,76 @@
+{
+    "title": "",
+    "description": "",
+    "thumbnail": "",
+    "color": "",
+    "responses": {
+        "typeOne": {
+            "name": "TypeOne Name",
+            "image": "",
+            "range": [0, 0],
+            "messages": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        "typeTwo": {
+            "name": "TypeTwo Name",
+            "image": "",
+            "range": [0, 0],
+            "messages": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        "typeThree": {
+            "name": "TypeThree Name",
+            "image": "",
+            "range": [0, 0],
+            "messages": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        "typeFour": {
+            "name": "TypeFour Name",
+            "image": "",
+            "range": [0, 0],
+            "messages": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        }
+    }
+}

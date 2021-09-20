@@ -50,10 +50,22 @@ const guildSchema = new mongoose.Schema({
         drops: {
             active: {type: Boolean, default: true},
             channelID: String,
-            messageID: String,
-            messageActive: Boolean,
             channels: Array,
-            feedChannel: String
+            feedChannel: String,
+            types: {
+                festiveDrop: {
+                    isActive: {type: Boolean, default: false},
+                    messageID: String,
+                    channelID: String,
+                    posted: Date
+                },
+                trolleyWitch: {
+                    isActive: {type: Boolean, default: false},
+                    messageID: String,
+                    channelID: String,
+                    posted: Date
+                }
+            }
         }
     }
 });
