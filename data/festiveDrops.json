@@ -1,5 +1,87 @@
 {
-    "data": {
-        
+    "sendData": {
+        "title": "",
+        "description": "",
+        "thumbnails": [
+            ""
+        ],
+        "emojis": [
+            ""
+        ]
+    },
+    "responseData": {
+        "title": "",
+        "choices": [
+            {
+                "name": "",
+                "range": [0, 0],
+                "emoji": "",
+                "messages": [
+                    ""
+                ],
+                "images": [
+                    ""
+                ],
+                "thumbnails": [
+
+                ]
+            },
+            {
+                "name": "",
+                "range": [0, 0],
+                "emoji": "",
+                "messages": [
+                    ""
+                ],
+                "images": [
+                    ""
+                ],
+                "thumbnails": [
+                    ""
+                ]
+            },
+            {
+                "name": "",
+                "range": [0, 0],
+                "emoji": "",
+                "messages": [
+                    ""
+                ],
+                "images": [
+                    ""
+                ],
+                "thumbnails": [
+                    ""
+                ]
+            },
+            {
+                "name": "",
+                "range": [0, 0],
+                "emoji": "",
+                "messages": [
+                    ""
+                ],
+                "images": [
+                    ""
+                ],
+                "thumbnails": [
+                    ""
+                ]
+            },
+            {
+                "name": "",
+                "range": [0, 0],
+                "emoji": "",
+                "messages": [
+                    ""
+                ],
+                "images": [
+                    ""
+                ],
+                "thumbnails": [
+                    ""
+                ]
+            }
+        ]
     }
 }
