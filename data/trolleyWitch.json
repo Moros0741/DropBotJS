@@ -1,12 +1,12 @@
 {
-    "title": "",
-    "description": "",
-    "thumbnail": "",
+    "title": "Anything from the trolley dears?",
+    "description": "**JELLYSLUGS** *15-75points* \n **BERTIE BOTTS** *30-60 points* \n **CHOCOLATE FROG** *5-100 points* \n **PUMPKIN JUICE** *25-50 points* \n **PUMPKIN PASTY** *20-75 points* \n {EMOJI HERE} **React with the treat emote you'd like to enjoy!**",
+    "thumbnail": "https://media.discordapp.net/attachments/772218247403536385/894317533937684500/twitch_1.png",
     "color": "",
     "responses": {
         "typeOne": {
             "name": "TypeOne Name",
-            "image": "",
+            "image": "https://cdn.discordapp.com/emojis/743130992939892777.png?size=160",
             "range": [0, 0],
             "messages": [
                 "",
@@ -23,7 +23,7 @@
         },
         "typeTwo": {
             "name": "TypeTwo Name",
-            "image": "",
+            "image": "https://cdn.discordapp.com/emojis/743134765728923799.png?size=160",
             "range": [0, 0],
             "messages": [
                 "",
@@ -40,7 +40,7 @@
         },
         "typeThree": {
             "name": "TypeThree Name",
-            "image": "",
+            "image": "https://cdn.discordapp.com/emojis/798582007100735550.png?size=160",
             "range": [0, 0],
             "messages": [
                 "",
@@ -57,7 +57,24 @@
         },
         "typeFour": {
             "name": "TypeFour Name",
-            "image": "",
+            "image": "https://cdn.discordapp.com/emojis/798639335112704061.png?size=160",
+            "range": [0, 0],
+            "messages": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+         "typeFive": {
+            "name": "TypeFive Name",
+            "image": "https://cdn.discordapp.com/emojis/743138737789337600.png?size=160",
             "range": [0, 0],
             "messages": [
                 "",
