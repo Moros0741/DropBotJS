@@ -9,16 +9,16 @@
             "image": "https://cdn.discordapp.com/emojis/743130992939892777.png?size=160",
             "range": [0, 0],
             "messages": [
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
+                "Here you are {user} , your **Chocolate Frog!** Are you a collector? **35 Points**",
+                "Here you are {user} , your **Chocolate Frog!** OMG that's the rarest card of all! **100 Points**",
+                "Here you are {user} , your **Chocolate Frog!** I suppose you can't ever have too many cards of the queen! **60 Points**",
+                "Here you are{user} , your **Chocolate Frog!** Oh by Merlin's beard, a Merlin card! **75 Points**",
+                "Here you are {user} , your **Chocolate Frog!** I guess you just wanted chocolate. **30 Points**",
+                "Here you are {user} , your **Chocolate Frog!** I don't even know who that is on your card. **10 Points**",
+                "Here you are {user} , your **Chocolate Frog!** Seriously, when did they start putting Umbridge on cards?? This must be a joke product. **5 Points**",
+                "Here you are {user} , your **Chocolate Frog!** Oh that's a foil card. **80 Points**",
+                "Here you are {user} , your **Chocolate Frog!** Can never go wrong with some chocolate! **50 Points**",
+                "Here you are {user} , your **Chocolate Frog!** Well.. could've been a worse card. **20 Points**"
             ]
         },
         "typeTwo": {
@@ -26,13 +26,13 @@
             "image": "https://cdn.discordapp.com/emojis/743134765728923799.png?size=160",
             "range": [0, 0],
             "messages": [
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
+                "Here you are {user} , your **Pumpkin Juice!** What a classic treat! **30 Points**",
+                "Here you are {user} , your **Pumpkin Juice!** Sorry they aren't very cold. **25 Points**",
+                "Here you are {user} , your **Pumpkin Juice!** And it's a recycled bottle! **45 Points**",
+                "Here you are {user} , your **Pumpkin Juice!** You know these are made locally? **35 Points**",
+                "Here you are {user} , your **Pumpkin Juice!** That'll quench your thirst! **45 Points**",
+                "Here you are {user} , your **Pumpkin Juice!** Can't go wrong with that. **25 Points**",
+                "Here you are {user} , your **Pumpkin Juice!** Oh, this batch is especially delicious. **50 Points**",
                 "",
                 "",
                 ""
