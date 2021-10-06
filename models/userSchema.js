@@ -6,7 +6,7 @@ const userSchems = new mongoose.Schema({
     houseName: String,
     nickname: String,
     birthday: String,
-    points: Number,
+    points: {type: Number, default: 0},
     active: {type: Boolean, default: true}
 })
 
