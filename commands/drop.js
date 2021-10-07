@@ -1,37 +1,37 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js')
 const helper = require('../modules/helpers')
+const dropHelper = require('../modules/dropHelper')
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('send-drop')
-        .setDescription('Send a points drop.')
-        .addStringOption(option =>
-            option.setName('type')
-            .setRequired(true)
-            .addChoice('Trolley Witch', 'TW')
-            .addChoice('Festive Drops', 'FD')
-        )
+        .setName("send-drop")
+        .setDescription("Send a points drop.")
         .addStringOption(option =>
             option.setName('time')
-            .setDescription('Duration of the drop. (Ex: 1m, 1h, 1d)')
-            .setRequired(false)
+            .setDescription("Duration of the drop. (Ex: 1m, 1h, 1d)")
+            .setRequired(true)
+        )
+        .addChannelOption(option =>
+            option.setName('channel')
+            .setDescription("Channel to send drop in")
+            .setRequired(true)
         ),
     async execute(interaction, guildProfile) {
         let duration;
         let time = interaction.options.getString('time')
-        let channel;
+        let channel = interaction.options.getChannel('channel')
         if (!time) {
             duration = 900000
         } else {
             duration = helper.getSeconds(time)
         }
-        let choice = interaction.options.getString('type')
-        if (choice === 'TW') {
-            channel = await dropHelper.trolleyWitch(guildProfile, interaction, duration)
-        } else if (choice === 'FD') {
-            channel = await dropHelper.festiveDrop(guildProfile, interaction, duration)
+        try {
+            await interaction.reply({content: "Sending drop...", ephemeral: true});
+            await dropHelper.festiveDrop(guildProfile, channel, duration);
+            return interaction.editReply({content: `Drop Message Sent in ${channel.toString()}!`, ephemeral: true});
+        } catch (err) {
+            console.log(err)
         }
-        return interaction.reply({contents: `Drop Message Sent in ${channel.toString()}!`, ephemeral: true})
     },
 };

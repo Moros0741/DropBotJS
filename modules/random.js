@@ -4,7 +4,7 @@ exports.choice = function(choices) {
 
 exports.range = function(min, max) {
     let number = Math.random() * (max - min) + min;
-    return number
+    return Math.floor(number)
 };
 
 exports.percent = function() {

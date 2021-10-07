@@ -1,87 +1,63 @@
 {
     "sendData": {
-        "title": "",
-        "description": "",
-        "thumbnails": [
-            ""
-        ],
+        "title": "Autumn is here!",
+        "message": "Leaves are falling everywhere! Catch a leaf and earn some points!",
+        "thumbnail": "",
+        "image": "",
         "emojis": [
-            ""
+            "<:emoji_52:895728677483053066>",
+            "<:emoji_52:895728713516351528>",
+            "<:emoji_54:895728751382523944>",
+            "<:emoji_55:895728788485328919>",
+            "<:emoji_56:895728827597193248>",
+            "<:emoji_57:895728867866738748>",
+            "<:emoji_58:895728905963581481>"
+        ],
+        "colours": [
+            "#c75959", 
+            "#f68321", 
+            "#694809", 
+            "#748945", 
+            "#c1862c"
         ]
     },
     "responseData": {
-        "title": "",
-        "choices": [
-            {
-                "name": "",
-                "range": [0, 0],
-                "emoji": "",
-                "messages": [
-                    ""
-                ],
-                "images": [
-                    ""
-                ],
-                "thumbnails": [
+        "images": [
+            "https://cdn.discordapp.com/attachments/772218247403536385/887615919466106920/fall1.gif", 
+            "https://cdn.discordapp.com/attachments/772218247403536385/887616074575650816/ex2.gif", 
+            "https://cdn.discordapp.com/attachments/772218247403536385/887618835715338240/fall2.gif",
+            "https://cdn.discordapp.com/attachments/772218247403536385/887622885026463764/fall3.gif",
+            "https://cdn.discordapp.com/attachments/772218247403536385/887629240818888715/fall4.gif", 
+            "https://cdn.discordapp.com/attachments/772218247403536385/887636015643238400/fall6.gif"
 
-                ]
-            },
-            {
-                "name": "",
-                "range": [0, 0],
-                "emoji": "",
-                "messages": [
-                    ""
-                ],
-                "images": [
-                    ""
-                ],
-                "thumbnails": [
-                    ""
-                ]
-            },
-            {
-                "name": "",
-                "range": [0, 0],
-                "emoji": "",
-                "messages": [
-                    ""
-                ],
-                "images": [
-                    ""
-                ],
-                "thumbnails": [
-                    ""
-                ]
-            },
-            {
-                "name": "",
-                "range": [0, 0],
-                "emoji": "",
-                "messages": [
-                    ""
-                ],
-                "images": [
-                    ""
-                ],
-                "thumbnails": [
-                    ""
-                ]
-            },
-            {
-                "name": "",
-                "range": [0, 0],
-                "emoji": "",
-                "messages": [
-                    ""
-                ],
-                "images": [
-                    ""
-                ],
-                "thumbnails": [
-                    ""
-                ]
-            }
+        ],
+        "messages": [
+            "..and the sun took a step back, the leaves lulled themselves to sleep and Autumn was awakended.",
+            "A wind has blown the rain away and blown the sky away and all the leaves away, and the trees stand. I think, I too, have known autumn too long.",
+            "Autumn leaves dont fall, they fly. They take their time and wander on this their only chance to soar.",
+            "The heat of autumn is different from the heat of summer. One ripens apples, the other turns them to cider.",
+            "Is not this a true autumn day? Just the still melancholy that I love—that makes life and nature harmonize.",
+            "And all the lives we ever lived and all the lives to be are full of trees and changing leaves...",
+            "Its the first day of autumn! A time of hot chocolatey mornings, and toasty marshmallow evenings, and, best of all, leaping into leaves!",
+            "Another fall, another turned page...",
+            "Autumn shows us how beautiful it is to let things go",
+            "Love the trees until their leaves fall off, then encourage them to try again next year.",
+            "Autumn is as joyful and sweet as an untimely end.",
+            "Autumn seemed to arrive suddenly that year. The morning of the first September was crisp and golden as an apple"
+
+        ],
+        "thumbnails": [
+            "https://cdn.discordapp.com/attachments/772218247403536385/887669910044573746/leaf.gif",
+            "https://media.giphy.com/media/ekCw02x66IMCiG2ZMN/giphy.gif",
+            "https://media.giphy.com/media/l03JZzozrhFIZVcvD7/giphy.gif",
+            "https://media.giphy.com/media/lYYAXyHMfXsoshx65G/giphy.gif"
+        ],
+        "colours": [
+            "#c75959", 
+            "#f68321", 
+            "#694809", 
+            "#748945", 
+            "#c1862c"
         ]
     }
 }
