@@ -12,13 +12,16 @@ function getChannel(guildProfile, guild) {
 
 exports.festiveDrop = async function(guildProfile, channel, duration) {
     const reacted = []
+    
     let embed = new MessageEmbed()
         .setTitle(FDdata.sendData.title)
         .setDescription(`${FDdata.sendData.message}`)
         .setColor(random.choice(FDdata.sendData.colours))
         .setThumbnail(random.choice(FDdata.responseData.thumbnails))
         .setImage(random.choice(FDdata.responseData.images))
+    
     let msg = await channel.send({embeds: [embed]})
+    
     for (emoji of FDdata.sendData.emojis) {
         await msg.react(emoji)
     };
