@@ -36,16 +36,20 @@ exports.festiveDrop = async function(guildProfile, channel, duration) {
 
             let reward = random.range(0, 75)
             let feedchannel = reaction.message.guild.channels.cache.find(channel => channel.id === guildProfile.systems.drops.feedChannel)
+            
             let responseEmbed = new MessageEmbed()
                 .setTitle("A Leaf Was Caught!")
                 .setDescription(`What's This?! Theres a message on this leaf! \n> *${random.choice(FDdata.responseData.messages)}* \n\nHere ${member.toString()}, have **${reward} points** for your efforts.`)
                 .setColor(random.choice(FDdata.responseData.colours))
                 .setThumbnail(random.choice(FDdata.responseData.thumbnails))
-            await reaction.message.channel.send({embeds: [responseEmbed]});
+            
+            
             let feedEmbed = new MessageEmbed()
                 .setDescription(`**${member.displayName}** has claimed a leaf and earned **${reward} points** for their house.`)
                 .setColor(`${random.choice(FDdata.responseData.colours)}`)
                 .setThumbnail(member.avatarURL({dynamic: true}) || member.user.avatarURL({dynamic: true}))
+            
+            await reaction.message.channel.send({embeds: [responseEmbed]});
             await feedchannel.send({embeds: [feedEmbed]});
         }
 

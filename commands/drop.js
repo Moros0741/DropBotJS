@@ -21,15 +21,22 @@ module.exports = {
         let duration;
         let time = interaction.options.getString('time')
         let channel = interaction.options.getChannel('channel')
+        
         if (!time) {
             duration = 900000
+        
         } else {
             duration = helper.getSeconds(time)
         }
+
         try {
+
             await interaction.reply({content: "Sending drop...", ephemeral: true});
+            
             await dropHelper.festiveDrop(guildProfile, channel, duration);
+            
             return interaction.editReply({content: `Drop Message Sent in ${channel.toString()}!`, ephemeral: true});
+        
         } catch (err) {
             console.log(err)
         }
