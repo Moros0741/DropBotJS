@@ -13,3 +13,13 @@ exports.getColor = function (){
     let color = pallet[Math.floor(Math.random() * pallet.length)];
     return color;
 };
+
+exports.getState = function(bool) {
+    if (bool === true) {
+        return "<a:green:848971267050176513> \`Enabled\`"
+    } else if (bool === false) {
+        return "<a:red:848971266676883506> \`Disabled\`"
+    } else if (!bool) {
+        return "<a:yellow:848971267050307624> \`Malfuntioned\`"
+    }
+};

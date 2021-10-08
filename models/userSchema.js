@@ -1,15 +1,16 @@
 const mongoose = require('mongoose')
 
-const userSchems = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     userID: {type: String, required: true, unique: true},
     houseRole: String,
     houseName: String,
     nickname: String,
     birthday: String,
     points: {type: Number, default: 0},
-    active: {type: Boolean, default: true}
-})
+    active: {type: Boolean, default: true},
+    cooldowns: [{command: String, used: {type: Date, default: Date.now()}}]
+});
 
-let model = mongoose.Model("Users", userSchema)
+let model = new mongoose.model("Users", userSchema)
 
 module.exports = model

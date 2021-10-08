@@ -1,0 +1,36 @@
+{
+    "responses": [
+        "Booger", 
+        "Cherry",
+        "Black Pepper", 
+        "Green Apple", 
+        "Dirt", 
+        "Lemon", 
+        "Earthworm",
+        "Watermelon",  
+        "Earwax", 
+        "Tutti-Fruitti",
+        "Grass", 
+        "Honey",
+        "Rotten Egg",
+        "Berry"
+    ],
+    "colours": [
+        "BLUE",
+        "GREEN",
+        "RED",
+        "ORANGE",
+        "GOLD",
+        "LUMINOUS_VIVID_PINK"
+    ],
+    "secondary": [
+        "Not the most popular flavor...",
+        "Oh! A favorite amongst first-years!",
+        "Eww! I can't believe you ate that!",
+        "Definitely wasn't the worst thing you've stuck in your mouth.",
+        "Why would you even consider that a flavor? More like death reason `# 1034`",
+        "Oh! That right there is my favorite! If you don't want it, can I have it?",
+        "Please for the love of Dumbledore, Stop this madness now!",
+        "HAHAHAHA! Bet that tasted like sour sluggs. Better ask Weasley. I hear he has some experience."
+    ]
+}
