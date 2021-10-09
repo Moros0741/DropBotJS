@@ -4,6 +4,25 @@ const userSchema = require('../models/userSchema')
 const random = require('../modules/random')
 const JBdata = require('../data/JBdata.json')
 
+async function beanMessage(member, channel, reward) {
+    let embed = new MessageEmbed()
+        .setTitle("WHOOOOOO BEANS!")
+        .setColor(random.choice(JBdata.colours))
+        .setDescription(`${member.toString()} <:jellyBeans:895779343127687198> You got **${random.choice(JBdata.responses)} Flavored**. \n> *${random.choice(JBdata.secondary)}* \n\nHere have **${reward} points**. You deserve it!`)
+        .setThumbnail(random.choice(JBdata.thumbails))
+    
+    return channel.send({embeds: [embed]});
+};
+
+async function feedMessage(member, channel, reward) {
+    let embed = new MessageEmbed()
+        .setDescription(`**${member.displayName}** used \`!beans\` and earned: **${reward} points** for their house.`)
+        .setColor(random.choice(JBdata.colours))
+        .setThumbnail(member.avatarURL({dynamic: true}) || member.user.avatarURL({dynamic: true}))
+
+    return channel.send({embeds: [embed]});
+};
+
 module.exports = {
     name: "messageCreate",
     once: false,
@@ -34,38 +53,17 @@ module.exports = {
                 ]
             });
             newProfile.save();
-            let responseEmbed = new MessageEmbed()
-                .setTitle("WHOOOOOO BEANS!")
-                .setColor(random.choice(JBdata.colours))
-                .setDescription(`${member.toString()} <:jellyBeans:895779343127687198> You got **${random.choice(JBdata.responses)} Flavored**. \n> *${random.choice(JBdata.secondary)}* \n\nHere have **${reward} points**. You deserve it!`)
+            await beanMessage(member, message.channel, reward)
+            await feedMessage(member, feedChannel, reward)
         
-            let feedEmbed = new MessageEmbed()
-                .setDescription(`**${member.displayName}** used \`!beans\` and earned: **${reward} points** for their house.`)
-                .setColor(random.choice(JBdata.colours))
-                .setThumbnail(member.avatarURL({dynamic: true}) || member.user.avatarURL({dynamic: true}))
-
-            
-            await message.channel.send({embeds: [responseEmbed]});
-            await feedChannel.send({embeds: [feedEmbed]});
-
         } else if (!memberProfile.cooldowns.find(cooldown => cooldown.command === 'bean')) {
             memberProfile.cooldowns.push({
                 command: "bean",
                 used: Date.now()
             });
             memberProfile.save();
-            let responseEmbed = new MessageEmbed()
-                .setTitle("WHOOOOOO BEANS!")
-                .setColor(random.choice(JBdata.colours))
-                .setDescription(`${member.toString()} <:jellyBeans:895779343127687198> You got **${random.choice(JBdata.responses)} Flavored**. \n> *${random.choice(JBdata.secondary)}* \n\nHere have **${reward} points**. You deserve it!`)
-        
-            let feedEmbed = new MessageEmbed()
-                .setDescription(`**${member.displayName}** used \`!beans\` and earned: **${reward} points** for their house.`)
-                .setColor(random.choice(JBdata.colours))
-                .setThumbnail(member.avatarURL({dynamic: true}) || member.user.avatarURL({dynamic: true}))
-            
-            await message.channel.send({embeds: [responseEmbed]});
-            await feedChannel.send({embeds: [feedEmbed]});
+            await beanMessage(member, message.channel, reward)
+            await feedMessage(member, feedChannel, reward)
 
         } else {
             let cooldown = memberProfile.cooldowns.find(cooldown => cooldown.command === 'bean')
@@ -73,22 +71,12 @@ module.exports = {
             let cooldownMS = 10800000
             let remains = new Date(cooldownMS - difference).toISOString().slice(11, 19).split(":")
 
-            if (!difference >= cooldownMS) {
+            if (difference >= cooldownMS) {
                 cooldown.used = Date.now();
                 memberProfile.save();
 
-                let responseEmbed = new MessageEmbed()
-                    .setTitle("WHOOOOOO BEANS!")
-                    .setColor(random.choice(JBdata.colours))
-                    .setDescription(`${member.toString()} <:jellyBeans:895779343127687198> You got **${random.choice(JBdata.responses)} Flavored**. \n> *${random.choice(JBdata.secondary)}* \n\nHere have **${reward} points**. You deserve it!`)
-        
-                let feedEmbed = new MessageEmbed()
-                    .setDescription(`**${member.displayName}** used \`!beans\` and earned: **${reward} points** for their house.`)
-                    .setColor(random.choice(JBdata.colours))
-                    .setThumbnail(member.avatarURL({dynamic: true}) || member.user.avatarURL({dynamic: true}))
-
-                await message.channel.send({embeds: [responseEmbed]});
-                await feedChannel.send({embeds: [feedEmbed]});
+                await beanMessage(member, message.channel, reward)
+                await feedMessage(member, feedChannel, reward)
 
             } else {
                 return message.reply({content: `You can't use this command yet. Please try again in \`${remains[0]}\` Hours \`${remains[1]}\` Minutes \`${remains[2]}\` Seconds`});
