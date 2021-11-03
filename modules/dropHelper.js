@@ -7,12 +7,12 @@ const helper = require('../modules/helpers')
 function getChannel(guildProfile, guild) {
     let channels = guild.channels.cache.map(channel => channel.id)
     let channel = random.choice(channels)
-    return channel 
+    return channel
 }
 
 exports.festiveDrop = async function(guildProfile, channel, duration) {
     const reacted = []
-    
+
     let embed = new MessageEmbed()
         .setTitle(
             FDdata.sendData.title
@@ -27,37 +27,34 @@ exports.festiveDrop = async function(guildProfile, channel, duration) {
             random.choice(FDdata.responseData.thumbnails)
         )
         .setImage(random.choice(
-            FDdata.responseData.images)
-        )
-    
-    let msg = await channel.send(
-        {
-            embeds: [
-                embed
-            ]
-        }
-    );
-    
-    for (emoji of FDdata.sendData.emojis) {
-        await msg.react(emoji)
+            FDdata.responseData.images))
+
+    let msg = await channel.send({
+        embeds: [
+            embed
+        ]
+    });
+    let emojis = FDdata.sendData.emojis
+    for (emoj of emojis) {
+        await msg.react(emoj)
     };
 
     const filter = (reaction, user) => {
         return reaction.message.id === msg.id && FDdata.sendData.emojis.includes(String(reaction.emoji));
     };
-    
+
     const collector = msg.createReactionCollector({ filter, time: duration });
-    
-    collector.on('collect', async (reaction, user) => {
+
+    collector.on('collect', async(reaction, user) => {
         if (!reacted.includes(user.id)) {
             let member = reaction.message.guild.members.cache.find(member => member.id === user.id)
             reacted.push(member.id)
 
             let reward = random.range(0, 75)
-            let feedchannel = reaction.message.guild.channels.cache.find(channel => 
+            let feedchannel = reaction.message.guild.channels.cache.find(channel =>
                 channel.id === guildProfile.systems.drops.feedChannel
             )
-            
+
             let responseEmbed = new MessageEmbed()
                 .setTitle(
                     "A Leaf Was Caught!"
@@ -71,8 +68,8 @@ exports.festiveDrop = async function(guildProfile, channel, duration) {
                 .setThumbnail(
                     random.choice(FDdata.responseData.thumbnails)
                 )
-            
-            
+
+
             let feedEmbed = new MessageEmbed()
                 .setDescription(
                     `**${member.displayName}** has claimed a leaf and earned **${reward} points** for their house.`
@@ -81,37 +78,29 @@ exports.festiveDrop = async function(guildProfile, channel, duration) {
                     `${random.choice(FDdata.responseData.colours)}`
                 )
                 .setThumbnail(
-                    member.avatarURL(
-                        {
-                            dynamic: true
-                        }
-                    ) || member.user.avatarURL(
-                        {
-                            dynamic: true
-                        }
-                    )
+                    member.avatarURL({
+                        dynamic: true
+                    }) || member.user.avatarURL({
+                        dynamic: true
+                    })
                 )
-            
-            await reaction.message.channel.send(
-                {
-                    embeds: [
-                        responseEmbed
-                    ]
-                }
-            );
 
-            await feedchannel.send(
-                {
-                    embeds: [
-                        feedEmbed
-                    ]
-                }
-            );
+            await reaction.message.channel.send({
+                embeds: [
+                    responseEmbed
+                ]
+            });
+
+            await feedchannel.send({
+                embeds: [
+                    feedEmbed
+                ]
+            });
         }
 
     });
-    
-    collector.on('end', async (collected) => {
+
+    collector.on('end', async(collected) => {
         await msg.delete()
     });
 };

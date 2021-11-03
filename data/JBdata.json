@@ -1,5 +1,5 @@
 {
-    "thumbails": [
+    "thumbnails": [
         "https://cdn.discordapp.com/attachments/772218247403536385/895919139573616660/giphy_18.gif",
         "https://media.discordapp.net/attachments/772218247403536385/895919336395530260/giphy_21.gif?width=462&height=462",
         "https://cdn.discordapp.com/attachments/772218247403536385/895924586464559104/giphy_19.gif",
@@ -8,20 +8,47 @@
         "https://cdn.discordapp.com/attachments/772218247403536385/896042389054062672/giphy_3.gif"
     ],
     "responses": [
-        "Booger", 
-        "Cherry",
-        "Black Pepper", 
-        "Green Apple", 
-        "Dirt", 
-        "Lemon", 
-        "Earthworm",
-        "Watermelon",  
-        "Earwax", 
-        "Tutti-Fruitti",
-        "Grass", 
-        "Honey",
-        "Rotten Egg",
-        "Berry"
+        "There's no way you enjoyed that {userMention}, it was feet flavored! \n\nPlease take these **__{pts} points__** and get something decent to eat.",
+        "I'm sorry, {userMention} did you just say your bean tastes like soap?  Maybe you should watch your mouth next time!  \n\nDon't tell McGonagall, but here's **__{pts} points__** for your creative cussing.",
+        "Sorry {userMention}, can't talk.  Trying not to gag at the smell of rotten eggs.  Take the **__{pts} points__** on the table over there and get out of here.",
+        "Thank you {userMention} for giving me yet another reason not to have children.  That baby poop bean is making it difficult for me to hold down my lunch.  \n\nThere's **__{pts} points__** in it for you if you chuck that awful thing out the window.",
+        "I know what that tan speckled bean is without having to taste it and it's a no from me, {userMention}.  \n\nTake these **__{pts} points__** and get that vomit flavored monstrosity away from me.",
+        "You know, my dog licks his earwax from his foot, so I didn't think this bean would be so bad.  {userMention} I was wrong!  \n\nHere's **__{pts} points__** for your silence and discretion.",
+        "{userMention} that is 100% a sardine flavored bean.  I'm positive.  \n\nI'll give you **__ {pts} points__** and promise not to tell if you feed it to the cat.",
+        "Look {userMention}, I'm not saying I saw you pick your nose to try to compare, but I know you didn't hate that troll bogey bean you ate earlier.  \n\nI won't tell and I'll give you **__{pts} points__** but I don't ever want to see you doing that again.",
+        "Mud pies were great when we were kids, but I really don't want to eat one now that I'm an adult.  \n\nGet that dirt flavored bean away from me {userMention} }and I'll give you these **__{pts} points__**.",
+        "{userMention} No!  Not gonna happen.  I can smell the liver from here.  \n\nTake these **__{pts} points__** from my pocket and get out of here with that thing.",
+        "{userMention}, belly button fluff just tastes like my fabric softener.  Not great but not terrible.  \n\nI'd rather have this than the **__{pts} points__** and whatever nasty flavor it is you just got.",
+        "I don't know how muggles deal with the taste of envelope glue {userMention}.  I want to cut the tongue out of my head.  \n\nTake these **__{pts} points__** and go grab me a fizzy drink, yeah?",
+        "{userMention}, I'm not Josie Grosie anymore!  You can't make me eat that dog food bean.  \n\nKeep it and those **__{pts} points__** for yourself.",
+        "Grass helps dogs vomit and I see why {userMention}.  Blech!  You were right, I didn't like it.  \n\nHere's the **__{pts} points__** you earned in our bet.  ",
+        "The joke is on you, {userMention},  because I love broccoli!  \n\nGood thing I'm feeling generous and am going to give you these **__{pts} points__** anyway.",
+        "{userMention}, cinnamon is one of my favorite flavors!  The spice reminds me of Christmas, which is right around the corner. \n\nI'm in the holiday spirit already, so please enjoy these **__{pts} points__**.",
+        "I can tell a green apple flavored bean from a mile away!  It's one of my favorites.  {userMention}, do you know who else likes green apple?  \n\nWell then take these **__{pts} points__** and find out so we can share!",
+        "Halloween may be over but pumpkins are definitely still the flavor of the season!  Don't go putting this in your latte or anything {userMention}, but do enjoy it.  \n\nAlso enjoy these **_{pts} points__**.",
+        "{userMention} don't even pretend that you don't love the taste of cherry beans.  It tastes like summertime and we can all use a bit of that in these chilly temperatures.  \n\nAppreciate the daydream of the beach and the **__30 points__** the come with it. ",
+        "{userMention}, citrus favored beans, especially orange, are the best.  I'll die on that hill.  \n\nOr, instead of my untimely demise, I'll offer you **__{pts} points__** to agree with me.",
+        "{userMention}, Bananas are one of my favorite fruits!  Always good for breakfast on the go.  \n\nNow please take these **__{pts} points__** and go away if you're going to keep singing the Minion banana song.",
+        "{userMention}, I prefer my strawberries in a pie or on a cake, but this bean is pretty good too.  I wouldn't call it my favorite but it's not the worst.  \n\nHave **__{pts} points__** for convincing me to give it a try.",
+        "Candy floss is too messy for me to eat in it's normal form, but I like it in bean form, {userMention}!  Much less sticky and doesn't take as long to eat.  \n\nOverall, definitely worth the **__{pts} points__** I gave you for it.",
+        "I really wish this sherry bean was alcoholic after the day I've had, but I'll forgive you, {userMention}.  It's quite tasty without the extra hit of flavor.  \n\nThe agreed upon **__{pts} points__** in payment is in the mail, I promise.",
+        "Mint is great in ice cream and gum,  but I'm not so sure about beans, {userMention}.  I suppose it's not too bad.  \n\nHere's **__{pts} points__** and you can have the next one.",
+        "{userMention}, I always thought the definition of something tasting purple would be a grape, but I think this sugared violet bean has it beat.  Very nice floral notes, which I reckon is to be expected.  \n\nPlease accept these **__{pts} points__** as thanks for opening my eyes to a whole new flavor.",
+        "Buttered popcorn beans should be gross but they're not!  \n\nSo {userMention}, I say grab the bag, your favorite film and these **__{pts} points__** and let's have a night in.",
+        "Marshmallows always make me want s'mores but these beans are good all on their own!  Just don't try to roast them, {userMention};  They definitely won't turn out like real marshmallows.  \n\nDon't be sad!  Look, **__{pts} points__** for your creativity.",
+        "Do you remember the song Peaches by the Presidents of the United States or did I just make you realize how old I am,  {userMention}?  Anyway, peach beans make me think of that song.  \n\nNow take these **__{pts} points__** and get off my lawn.",
+        "Coconut flavored beans are cool, but not as cool as levitating a coconut and dropping it on Snape's head, right, {userMention}?  He's right behind me, isn't he?  \n\nQuick, take these **__{pts} points__** and run!",
+        "Some people think the lemon beans are sour,  {userMention}, but I disagree!  I think they're quite refreshing.  \n\nWould you mind taking these **__{pts} points__** and going to grab me a lemonade?",
+        "{userMention}, Something about eating an eclair flavored bean falls flat for me.  I like it, it's good, but I'd rather have the real thing.  \n\nYou tried though, so please take these **__{pts} points__** for your effort.",
+        "{userMention}, I was always scared that if I ate bubblegum it would stay in my stomach for 7 years.  This bubblegum flavored bean is the perfect solution!  \n\nIt's rude to laugh at someone's childhood experiences, but since it's a little funny and this bean is good, here's **__{pts} points__*.",
+        "I don't like blueberries but I like this bean.  {userMention}, Does that mean I really do like blueberries?  \n\nI need to have an existential crisis over this so please take these **__{pts} points__** and leave me to it.",
+        "{userMention}, Tutti fruitti is my favorite bean.  Not because it tastes like fruit punch, but because it's funny.  \n\nAnd now you get to have these **__{pts} points__** because you think it's funny too!",
+        "Cream puffs are better served chilled and with a hot coffee, but I reckon I can make an exception because portable, bean-shaped cream puffs are much more convenient.  Don't you agree, {userMention}?  \n\nWhy don't you use these **__{pts} points__** to go buy us some more and we'll take a walk and pretend we're in Paris.",
+        "{userMention}, Grape jelly is great on toast but better in bean form!  It reminds me of picnics when I was a kid.  \n\nFor sharing in my nostaliga, I bestow upon you **__{pts} points__** and the honorary title of Grapemaster Flex.",
+        "I cannot believe this is my first time getting a honey bean!  It's probably the best of the lot.  And the best part is that it's nowhere near as sticky as regular honey.  \n\nThis is definitely deserving of **__{pts} points__**.",
+        "{userMention}, Chocolate is too sacred to condense and put into a sugar pocket and call it a bean, but here we are.  It doesn't taste like real chocolate but it taste like something related to chcolate so that's good enough for me.  \n\nHere take these **__{pts} points__** and go buy a Hershey bar or something, yeah?",
+        "Coffee is the only flavor that matters.  {userMention}, You can keep your fruits, keep your chocolate, keep your sugary confections, because all I need is coffee flavored beans.  \n\nThis delightful snack has put me in such a good mood that I'm willing to simply hand over these **__{pts} points__** and wish you a fantastic day."
+
     ],
     "colours": [
         "BLUE",
@@ -30,15 +57,5 @@
         "ORANGE",
         "GOLD",
         "LUMINOUS_VIVID_PINK"
-    ],
-    "secondary": [
-        "Not the most popular flavor...",
-        "Oh! A favorite amongst first-years!",
-        "Eww! I can't believe you ate that!",
-        "Definitely wasn't the worst thing you've stuck in your mouth.",
-        "Why would you even consider that a flavor? More like death reason `# 1034`",
-        "Oh! That right there is my favorite! If you don't want it, can I have it?",
-        "Please for the love of Dumbledore, Stop this madness now!",
-        "HAHAHAHA! Bet that tasted like sour sluggs. Better ask Weasley. I hear he has some experience."
     ]
 }
