@@ -54,7 +54,7 @@ exports.festiveDrop = async function(guildProfile, channel, duration) {
             let feedchannel = reaction.message.guild.channels.cache.find(channel =>
                 channel.id === guildProfile.systems.drops.feedChannel
             )
-
+            await reaction.users.remove(user);
             let responseEmbed = new MessageEmbed()
                 .setTitle(
                     "A Leaf Was Caught!"
