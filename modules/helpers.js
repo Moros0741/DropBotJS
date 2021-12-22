@@ -1,17 +1,38 @@
-
-exports.getSeconds = function (duration) {
+exports.getSeconds = function(duration) {
     time = duration.slice(0, duration.length - 1)
     let index = duration.slice(duration.length - 1, duration.length)
     console.log(time, index)
-    time_convert = {"s":1000, "m":60000, "h":3600000,"d":86400000}
-    newtime= Number(time) * time_convert[index]
+    time_convert = { "s": 1000, "m": 60000, "h": 3600000, "d": 86400000 }
+    newtime = Number(time) * time_convert[index]
     return newtime
 };
 
-exports.getColor = function (){
-    let pallet = ['#c75959', '#f68321', '#694809', '#748945', '#c1862c'];
-    let color = pallet[Math.floor(Math.random() * pallet.length)];
-    return color;
+exports.getColor = function(member) {
+    const houses = ["694323794126569564", "694324508399632407", "694324672891977749", "694324237032226887", "741399908430512181"];
+    const role = member.roles.cache.find(role => houses.includes(role.id));
+
+    /*
+    Hufflepuff: 694323794126569564
+    Gryffindor: 694324508399632407
+    Slytherin: 694324672891977749
+    Ravenclaw: 694324237032226887
+    Minister: 741399908430512181 */
+
+    switch (role.id) {
+        case "694324508399632407":
+            return "RED"
+        case "694323794126569564":
+            return "GOLD"
+        case "694324237032226887":
+            return "BLUE"
+        case "694324672891977749":
+            return "GREEN"
+        case "741399908430512181":
+            return "PURPLE"
+        default:
+            return "PINK"
+    };
+
 };
 
 exports.getState = function(bool) {

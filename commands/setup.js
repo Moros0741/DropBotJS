@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const { MessageEmbed, Permissions } = require('discord.js')
 const helper = require('../modules/helpers')
+const { developerIds } = require('../data/config.json')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -26,9 +27,7 @@ module.exports = {
             .setRequired(false)
         ),
     async execute(interaction, guildProfile) {
-        if (!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
-            return interaction.reply({content: "This command requires \`ADMINISTRATOR\` permissions. Which you don't have.", ephemeral: true})
-        } else {
+        if (interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || developerIds.includes(interaction.member.id)) {
             let choice = interaction.options.getString('choices')
             let channel = interaction.options.getChannel('channel')
             let enabled = interaction.options.getBoolean('enable')
@@ -38,23 +37,40 @@ module.exports = {
 
                 guildProfile.systems.drops.feedChannel = channel.id
                 guildProfile.save();
-                return interaction.reply({content: `Feed messages will now be sent to ${channel.toString()}`, ephemeral: true});
-            
+                return interaction.reply({
+                    content: `Feed messages will now be sent to ${channel.toString()}`,
+                    ephemeral: true
+                });
+
             } else if (choice === "beanFeed") {
                 guildProfile.systems.bean.feedChannel = channel.id
                 guildProfile.save();
-                return interaction.reply({content: `Feed message for \`!bean\` command will now be sent to ${channel.toString()}`, ephemeral: true});
-            
+                return interaction.reply({
+                    content: `Feed message for \`!bean\` command will now be sent to ${channel.toString()}`,
+                    ephemeral: true
+                });
+
             } else if (choice === "beanChannel") {
                 guildProfile.systems.bean.channel = channel.id
                 guildProfile.save();
-                return interaction.reply({content: `\`!bean\` command will now only work in ${channel.toString()}`, ephemeral: true});
+                return interaction.reply({
+                    content: `\`!bean\` command will now only work in ${channel.toString()}`,
+                    ephemeral: true
+                });
 
             } else if (choice === "beanToggle") {
                 guildProfile.systems.bean.isActive = enabled
                 guildProfile.save();
-                return interaction.reply({content: `\`!bean\` command is now ${status}`, ephemeral: true});
+                return interaction.reply({
+                    content: `\`!bean\` command is now ${status}`,
+                    ephemeral: true
+                });
             }
+        } else {
+            return interaction.reply({
+                content: "This command requires special permissions, which you don't have.",
+                ephemeral: true
+            });
         }
     },
 };

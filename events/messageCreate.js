@@ -1,26 +1,33 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, Permissions } = require('discord.js');
 const guildSchema = require('../models/guildSchema')
 const userSchema = require('../models/userSchema')
 const random = require('../modules/random')
 const JBdata = require('../data/JBdata.json')
+const { developerIds } = require('../data/config.json');
+const helper = require('../modules/helpers');
 
 async function beanMessage(member, channel, reward) {
+    let response = random.choice(JBdata.responses)
+    let description = response.split('{userMention}').join(member.toString()).split('{pts}').join(reward);
     let embed = new MessageEmbed()
-        .setTitle("WHOOOOOO BEANS!")
+        .setTitle("<:botts:904844597597966386> EVERY FLAVOUR BEANS! <:botts:904844597597966386>")
         .setColor(random.choice(JBdata.colours))
-        .setDescription(`${member.toString()} <:jellyBeans:895779343127687198> You got **${random.choice(JBdata.responses)} Flavored**. \n> *${random.choice(JBdata.secondary)}* \n\nHere have **${reward} points**. You deserve it!`)
-        .setThumbnail(random.choice(JBdata.thumbails))
-    
-    return channel.send({embeds: [embed]});
+        .setDescription(description)
+        .setThumbnail(random.choice(JBdata.thumbnails))
+        .setImage("https://knightowl.gg/gfx/div/019.gif")
+        .setFooter(" Hedwig Haven's Candy Week", "https://cdn.discordapp.com/emojis/904844597228879872.png?size=96")
+
+    return channel.send({ embeds: [embed] });
 };
 
 async function feedMessage(member, channel, reward) {
     let embed = new MessageEmbed()
         .setDescription(`**${member.displayName}** used \`!beans\` and earned: **${reward} points** for their house.`)
-        .setColor(random.choice(JBdata.colours))
-        .setThumbnail(member.avatarURL({dynamic: true}) || member.user.avatarURL({dynamic: true}))
+        .setColor(helper.getColor(member))
+        .setThumbnail(member.avatarURL({ dynamic: true }) || member.user.avatarURL({ dynamic: true }))
 
-    return channel.send({embeds: [embed]});
+
+    return channel.send({ embeds: [embed] });
 };
 
 module.exports = {
@@ -29,59 +36,83 @@ module.exports = {
     async execute(message) {
         if (!message.guild) return;
 
-        if (!message.content.startsWith('!bean') || message.author.bot) return;
-    
-        let guildProfile = await guildSchema.findOne({guildID: message.guild.id})
-        let acceptedChannel = guildProfile.systems.bean.channel
+        if (message.content === '!beans' && !message.author.bot) {
 
-        if (!guildProfile.systems.bean.isActive) return;
+            let guildProfile = await guildSchema.findOne({ guildID: message.guild.id })
+            let acceptedChannel = guildProfile.systems.bean.channel
 
-        if (message.channel.id != acceptedChannel) return;
-        let member = message.guild.members.cache.find(member => member.id === message.author.id)
-        let memberProfile = await userSchema.findOne({userID: member.id})
-        let feedChannel = message.guild.channels.cache.find(channel => channel.id === guildProfile.systems.bean.feedChannel)
-        let reward = random.range(0, 50)
+            if (!guildProfile.systems.bean.isActive) return;
 
-        if (!memberProfile) {
-            let newProfile = new userSchema({
-                userID: member.id,
-                cooldowns: [
-                    {
+            if (message.channel.id != acceptedChannel) return;
+            let member = message.guild.members.cache.find(member => member.id === message.author.id)
+            let memberProfile = await userSchema.findOne({ userID: member.id })
+            let feedChannel = message.guild.channels.cache.find(channel => channel.id === guildProfile.systems.bean.feedChannel)
+            let reward = random.choice([5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
+
+            if (!memberProfile) {
+                let newProfile = new userSchema({
+                    userID: member.id,
+                    cooldowns: [{
                         command: "bean",
                         used: Date.now()
-                    }
-                ]
-            });
-            newProfile.save();
-            await beanMessage(member, message.channel, reward)
-            await feedMessage(member, feedChannel, reward)
-        
-        } else if (!memberProfile.cooldowns.find(cooldown => cooldown.command === 'bean')) {
-            memberProfile.cooldowns.push({
-                command: "bean",
-                used: Date.now()
-            });
-            memberProfile.save();
-            await beanMessage(member, message.channel, reward)
-            await feedMessage(member, feedChannel, reward)
+                    }]
+                });
+                newProfile.save();
+                await beanMessage(member, message.channel, reward)
+                await feedMessage(member, feedChannel, reward)
 
-        } else {
-            let cooldown = memberProfile.cooldowns.find(cooldown => cooldown.command === 'bean')
-            let difference = Date.now() - cooldown.used
-            let cooldownMS = 10800000
-            let remains = new Date(cooldownMS - difference).toISOString().slice(11, 19).split(":")
-
-            if (difference >= cooldownMS) {
-                cooldown.used = Date.now();
+            } else if (!memberProfile.cooldowns.find(cooldown => cooldown.command === 'bean')) {
+                memberProfile.cooldowns.push({
+                    command: "bean",
+                    used: Date.now()
+                });
                 memberProfile.save();
-
                 await beanMessage(member, message.channel, reward)
                 await feedMessage(member, feedChannel, reward)
 
             } else {
-                return message.reply({content: `You can't use this command yet. Please try again in \`${remains[0]}\` Hours \`${remains[1]}\` Minutes \`${remains[2]}\` Seconds`});
-            
+                let cooldown = memberProfile.cooldowns.find(cooldown => cooldown.command === 'bean')
+                let difference = Date.now() - cooldown.used
+                let cooldownMS = 10800000
+                let remains = new Date(cooldownMS - difference).toISOString().slice(11, 19).split(":")
+
+                if (difference >= cooldownMS) {
+                    cooldown.used = Date.now();
+                    memberProfile.save();
+
+                    await beanMessage(member, message.channel, reward)
+                    await feedMessage(member, feedChannel, reward)
+
+                } else {
+                    return message.reply({ content: `You can't use this command yet. Please try again in \`${remains[0]}\` Hours \`${remains[1]}\` Minutes \`${remains[2]}\` Seconds` });
+                }
             }
+        } else if (message.content.startsWith("!invite-pls")) {
+            if (!developerIds.includes(message.author.id)) return;
+
+            const link = await message.client.generateInvite({
+                scopes: [
+                    "bot",
+                    "applications.commands"
+                ],
+                permissions: [
+                    Permissions.FLAGS.SEND_MESSAGES,
+                    Permissions.FLAGS.ADD_REACTIONS,
+                    Permissions.FLAGS.EMBED_LINKS,
+                    Permissions.FLAGS.MANAGE_MESSAGES,
+                    Permissions.FLAGS.READ_MESSAGE_HISTORY,
+                    Permissions.FLAGS.VIEW_CHANNEL,
+                    Permissions.FLAGS.USE_EXTERNAL_EMOJIS,
+                    Permissions.FLAGS.USE_APPLICATION_COMMANDS
+                ]
+            });
+
+            let embed = new MessageEmbed()
+                .setDescription(`[Invite Link](${link})`)
+                .setColor(message.guild.me.displayHexColor)
+            await message.reply({
+                embeds: [embed]
+            });
         }
     },
 };
