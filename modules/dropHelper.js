@@ -50,7 +50,8 @@ exports.festiveDrop = async function(guildProfile, channel, duration) {
             let member = reaction.message.guild.members.cache.find(member => member.id === user.id)
             reacted.push(member.id)
 
-            let reward = random.range(0, 75)
+            let reward = random.choice([5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100])
+
             let feedchannel = reaction.message.guild.channels.cache.find(channel =>
                 channel.id === guildProfile.systems.drops.feedChannel
             )

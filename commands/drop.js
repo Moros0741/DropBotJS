@@ -19,13 +19,16 @@ module.exports = {
             .setRequired(true)
         ),
     async execute(interaction, guildProfile) {
-        isAllowed = interaction.member.roles.cache.find(role => role.id === "810960934805176322")
-        if (!developerIds.includes(interaction.member.id)) {
-            return interaction.reply({
-                content: "You don't have the necessary permission to use this command.",
-                ephemeral: true
-            });
-        } else {
+        let allowed = () => {
+            let role = interaction.guild.roles.cache.find(role => role.id === "810960934805176322")
+            if (!interaction.member.roles.cache.has(role)) {
+                return true
+            } else {
+                return false
+            }
+        };
+        if (developerIds.includes(interaction.member.id) || allowed()) {
+
             let duration;
             let time = interaction.options.getString('time')
             let channel = interaction.options.getChannel('channel')
@@ -38,7 +41,6 @@ module.exports = {
             }
 
             try {
-
                 await interaction.reply({ content: "Sending drop...", ephemeral: true });
 
                 await dropHelper.festiveDrop(guildProfile, channel, duration);
@@ -48,6 +50,13 @@ module.exports = {
             } catch (err) {
                 console.log(err)
             }
+
+        } else {
+            return interaction.reply({
+                content: "You don't have the necessary permission to use this command.",
+                ephemeral: true
+            });
+
         }
     },
 };

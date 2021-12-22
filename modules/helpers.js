@@ -8,14 +8,15 @@ exports.getSeconds = function(duration) {
 };
 
 exports.getColor = function(member) {
-    const houses = ["694323794126569564", "694324508399632407", "694324672891977749", "694324237032226887"];
+    const houses = ["694323794126569564", "694324508399632407", "694324672891977749", "694324237032226887", "741399908430512181"];
     const role = member.roles.cache.find(role => houses.includes(role.id));
 
     /*
     Hufflepuff: 694323794126569564
     Gryffindor: 694324508399632407
     Slytherin: 694324672891977749
-    Ravenclaw: 694324237032226887 */
+    Ravenclaw: 694324237032226887
+    Minister: 741399908430512181 */
 
     switch (role.id) {
         case "694324508399632407":
@@ -26,8 +27,10 @@ exports.getColor = function(member) {
             return "BLUE"
         case "694324672891977749":
             return "GREEN"
-        default:
+        case "741399908430512181":
             return "PURPLE"
+        default:
+            return "PINK"
     };
 
 };
