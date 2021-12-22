@@ -36,12 +36,7 @@ module.exports = {
     async execute(message) {
         if (!message.guild) return;
 
-<<<<<<< HEAD
         if (message.content === '!beans' && !message.author.bot) {
-=======
-        if (message.content.startsWith('!bean') && !message.author.bot) {
->>>>>>> b2ea11bc11e80a57056291710bd894fd305848b5
-
             let guildProfile = await guildSchema.findOne({ guildID: message.guild.id })
             let acceptedChannel = guildProfile.systems.bean.channel
 
@@ -75,18 +70,15 @@ module.exports = {
                 await feedMessage(member, feedChannel, reward)
 
             } else {
-<<<<<<< HEAD
+
                 let cooldown = memberProfile.cooldowns.find(cooldown => cooldown.command === 'bean')
-=======
-                /*let cooldown = memberProfile.cooldowns.find(cooldown => cooldown.command === 'bean')
->>>>>>> b2ea11bc11e80a57056291710bd894fd305848b5
                 let difference = Date.now() - cooldown.used
                 let cooldownMS = 10800000
                 let remains = new Date(cooldownMS - difference).toISOString().slice(11, 19).split(":")
 
                 if (difference >= cooldownMS) {
                     cooldown.used = Date.now();
-<<<<<<< HEAD
+
                     memberProfile.save();
 
                     await beanMessage(member, message.channel, reward)
@@ -95,16 +87,6 @@ module.exports = {
                 } else {
                     return message.reply({ content: `You can't use this command yet. Please try again in \`${remains[0]}\` Hours \`${remains[1]}\` Minutes \`${remains[2]}\` Seconds` });
                 }
-=======
-                    memberProfile.save();*/
-
-                await beanMessage(member, message.channel, reward)
-                await feedMessage(member, feedChannel, reward)
-
-                /*} else {
-                    return message.reply({ content: `You can't use this command yet. Please try again in \`${remains[0]}\` Hours \`${remains[1]}\` Minutes \`${remains[2]}\` Seconds` });
-                */
->>>>>>> b2ea11bc11e80a57056291710bd894fd305848b5
             }
         } else if (message.content.startsWith("!invite-pls")) {
             if (!developerIds.includes(message.author.id)) return;
